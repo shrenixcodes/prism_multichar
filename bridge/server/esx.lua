@@ -68,6 +68,12 @@ function Bridge.GetCharacters(license, _, maxSlots)
         if row then
             local accounts = row.accounts and json.decode(row.accounts) or {}
             local job = ESX.Jobs[row.job]
+            local position = nil
+
+            if row.position then
+                local decoded = json.decode(row.position)
+                position = { x = decoded.x, y = decoded.y, z = decoded.z, w = decoded.heading or 0.0 }
+            end
 
             characters[#characters + 1] = {
                 id = identifier,
@@ -81,7 +87,7 @@ function Bridge.GetCharacters(license, _, maxSlots)
                 cash = math.floor(tonumber(accounts.money) or 0),
                 bank = math.floor(tonumber(accounts.bank) or 0),
                 lastPlayed = row.prism_last_played,
-                position = row.position and json.decode(row.position) or nil
+                position = position
             }
         end
     end
