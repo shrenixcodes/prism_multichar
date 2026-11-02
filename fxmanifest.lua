@@ -1,0 +1,8 @@
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+
+name 'prism_multichar'
+author 'prism_multichar contributors'
+description 'Cinematic multi-character selector for Qbox, QBCore and ESX Legacy'
+version '0.1.0'
