@@ -167,3 +167,7 @@ end
 function Bridge.OnPlayerLoaded(_)
     TriggerEvent('esx:onPlayerSpawn')
 end
+
+RegisterCommand(Config.ESX.RelogCommand, function(src)
+    TriggerEvent('esx:playerLogout', src, function() end)
+end, false)

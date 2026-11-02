@@ -56,7 +56,11 @@ local function buildSlots(characters, slotCount)
     local slots = {}
 
     for i = 1, total do
-        slots[i] = used[i] or false
+        local character = used[i]
+        if character then
+            character.slot = i
+        end
+        slots[i] = character or false
     end
 
     return slots, total
