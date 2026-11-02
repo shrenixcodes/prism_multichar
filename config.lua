@@ -97,10 +97,10 @@ Config.WeatherSync = {
 Config.ESX = {
     DateFormat = '%d/%m/%Y',
     RelogCommand = 'relog',
+    -- the users row always gets deleted, list any addon tables that key
+    -- per-character data by identifier here so they get cleaned up too
     DeleteTables = {
-        { table = 'users', column = 'identifier' },
-        { table = 'user_licenses', column = 'owner' },
-        { table = 'user_inventory', column = 'identifier' },
-        { table = 'user_accounts', column = 'identifier' }
+        { table = 'users', column = 'identifier' }
+        -- { table = 'owned_vehicles', column = 'owner' },
     }
 }

@@ -8,7 +8,7 @@ function Bridge.IsLoggedIn(src)
     return exports.qbx_core:GetPlayer(src) ~= nil
 end
 
-function Bridge.Login(src, citizenid)
+function Bridge.Login(src, citizenid, _)
     return exports.qbx_core:Login(src, citizenid) == true
 end
 
@@ -68,6 +68,8 @@ function Bridge.GiveStarterItems(src, playerData)
     end
 end
 
-function Bridge.OnPlayerLoaded(src)
-    TriggerEvent('QBCore:Server:OnPlayerLoaded', src)
+-- QBCore:Server:OnPlayerLoaded listeners read the ambient `source`, same as
+-- when qb-multicharacter fires it, so this must run inside that player's own event
+function Bridge.OnPlayerLoaded(_)
+    TriggerEvent('QBCore:Server:OnPlayerLoaded')
 end

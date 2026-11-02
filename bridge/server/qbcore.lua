@@ -10,7 +10,7 @@ function Bridge.IsLoggedIn(src)
     return QBCore.Functions.GetPlayer(src) ~= nil
 end
 
-function Bridge.Login(src, citizenid)
+function Bridge.Login(src, citizenid, _)
     return QBCore.Player.Login(src, citizenid) == true
 end
 
@@ -89,6 +89,6 @@ function Bridge.GiveStarterItems(src, playerData)
 end
 
 function Bridge.OnPlayerLoaded(src)
-    TriggerEvent('QBCore:Server:OnPlayerLoaded', src)
+    TriggerEvent('QBCore:Server:OnPlayerLoaded')
     QBCore.Commands.Refresh(src)
 end
