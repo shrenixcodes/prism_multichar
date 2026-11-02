@@ -1,8 +1,12 @@
+if Config.Framework ~= 'qbcore' and not (Config.Framework == 'auto' and GetResourceState('qb-core') == 'started') then
+    return
+end
+
 local QBCore = exports['qb-core']:GetCoreObject()
 
 Bridge.Framework = 'qbcore'
 
-function Bridge.GetCharacters(license, license2)
+function Bridge.GetCharacters(license, license2, _)
     return Bridge.FetchQBCharacters(license, license2)
 end
 

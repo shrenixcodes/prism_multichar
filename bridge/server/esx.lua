@@ -1,3 +1,7 @@
+if Config.Framework ~= 'esx' and not (Config.Framework == 'auto' and GetResourceState('es_extended') == 'started') then
+    return
+end
+
 local ESX = exports['es_extended']:getSharedObject()
 
 Bridge.Framework = 'esx'
@@ -54,7 +58,7 @@ local function touchLastPlayed(identifier)
     MySQL.query.await('UPDATE users SET prism_last_played = NOW() WHERE identifier = ?', { identifier })
 end
 
-function Bridge.GetCharacters(license, maxSlots)
+function Bridge.GetCharacters(license, _, maxSlots)
     local characters = {}
 
     for slot = 1, maxSlots do

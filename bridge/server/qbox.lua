@@ -1,6 +1,10 @@
+if Config.Framework ~= 'qbox' and not (Config.Framework == 'auto' and GetResourceState('qbx_core') == 'started') then
+    return
+end
+
 Bridge.Framework = 'qbox'
 
-function Bridge.GetCharacters(license, license2)
+function Bridge.GetCharacters(license, license2, _)
     return Bridge.FetchQBCharacters(license, license2)
 end
 
