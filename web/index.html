@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>prism_multichar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+    <div class="letterbox letterbox-top"></div>
+    <div class="letterbox letterbox-bottom"></div>
+
+    <aside class="panel panel-left">
+        <div class="brand">
+            <span class="brand-mark">prism</span>
+            <span class="brand-sub">character selection</span>
+        </div>
+        <ul class="slot-list" id="slotList"></ul>
+        <p class="hint">&uarr;&darr; to browse &middot; enter to play</p>
+    </aside>
+
+    <main class="stage" id="stage">
+        <div class="stage-hint" id="stageHint"></div>
+    </main>
+
+    <aside class="panel panel-right">
+        <div class="details-view" id="detailsView"></div>
+
+        <form class="create-view hidden" id="createForm" autocomplete="off">
+            <h2 class="panel-title" id="createTitle"></h2>
+
+            <label class="field">
+                <span class="field-label" data-locale="label_firstname"></span>
+                <input type="text" name="firstname" maxlength="16" required>
+            </label>
+
+            <label class="field">
+                <span class="field-label" data-locale="label_lastname"></span>
+                <input type="text" name="lastname" maxlength="16" required>
+            </label>
+
+            <label class="field">
+                <span class="field-label" data-locale="label_dob"></span>
+                <input type="date" name="dob" required>
+            </label>
+
+            <label class="field">
+                <span class="field-label" data-locale="label_gender"></span>
+                <select name="gender" required>
+                    <option value="male" data-locale="gender_male"></option>
+                    <option value="female" data-locale="gender_female"></option>
+                </select>
+            </label>
+
+            <label class="field field-nationality">
+                <span class="field-label" data-locale="label_nationality"></span>
+                <input type="text" name="nationality" maxlength="50" required>
+            </label>
+
+            <button type="submit" class="btn btn-primary" data-locale="action_create"></button>
+        </form>
+    </aside>
+
+    <section class="spawn-picker hidden" id="spawnPicker">
+        <h2 class="panel-title" data-locale="spawn_title"></h2>
+        <ul class="spawn-list" id="spawnList"></ul>
+        <p class="hint" data-locale="spawn_hint"></p>
+    </section>
+
+    <div class="toast hidden" id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
