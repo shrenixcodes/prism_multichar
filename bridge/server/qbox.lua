@@ -39,7 +39,7 @@ function Bridge.CreateCharacter(src, data, slot)
     return player.PlayerData.citizenid
 end
 
-function Bridge.DeleteCharacter(citizenid)
+function Bridge.DeleteCharacter(_, citizenid)
     exports.qbx_core:DeleteCharacter(citizenid)
     Bridge.DeleteAppearance(citizenid)
     return true
