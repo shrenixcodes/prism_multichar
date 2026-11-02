@@ -9,6 +9,10 @@ version '0.1.0'
 
 shared_script 'config.lua'
 
+client_scripts {
+    'bridge/client.lua'
+}
+
 server_scripts {
     'bridge/server/_common.lua',
     'bridge/server/qbox.lua',
