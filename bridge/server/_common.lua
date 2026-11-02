@@ -1,5 +1,11 @@
 Bridge = Bridge or {}
 
+-- qb-style charinfo stores gender as 0/1, inherited from qb-multicharacter's convention
+local genderFromNumber = { [0] = 'male', [1] = 'female' }
+local genderToNumber = { male = 0, female = 1 }
+
+Bridge.GenderToNumber = genderToNumber
+
 function Bridge.GetIdentifiers(src)
     local license, license2
     for _, id in ipairs(GetPlayerIdentifiers(src)) do
@@ -13,10 +19,12 @@ function Bridge.GetIdentifiers(src)
 end
 
 -- qbox and qbcore both keep characters in a `players` table shaped the same way,
--- so the row-to-character mapping can live here instead of in both bridges
+-- so the row-to-character mapping can live here instead of in both bridges.
+-- neither framework has a license2 column, both store whichever identifier
+-- was available in `license`, so the same value has to be checked twice
 function Bridge.FetchQBCharacters(license, license2)
     local rows = MySQL.query.await(
-        'SELECT citizenid, charinfo, job, money, last_updated FROM players WHERE license = ? OR license2 = ?',
+        'SELECT * FROM players WHERE license = ? OR license = ?',
         { license, license2 }
     )
 
@@ -30,18 +38,21 @@ function Bridge.FetchQBCharacters(license, license2)
         local charinfo = type(row.charinfo) == 'string' and json.decode(row.charinfo) or row.charinfo or {}
         local job = type(row.job) == 'string' and json.decode(row.job) or row.job or {}
         local money = type(row.money) == 'string' and json.decode(row.money) or row.money or {}
+        local position = type(row.position) == 'string' and json.decode(row.position) or row.position or nil
 
         characters[#characters + 1] = {
             id = row.citizenid,
+            slot = tonumber(charinfo.cid) or (row.cid and tonumber(row.cid)),
             firstname = charinfo.firstname,
             lastname = charinfo.lastname,
             dob = charinfo.birthdate,
-            gender = charinfo.gender,
+            gender = genderFromNumber[charinfo.gender] or 'male',
             nationality = charinfo.nationality,
             job = job.label or job.name or 'unemployed',
             cash = math.floor(tonumber(money.cash) or 0),
             bank = math.floor(tonumber(money.bank) or 0),
-            lastPlayed = row.last_updated
+            lastPlayed = row.last_updated or row.last_logged_out,
+            position = position
         }
     end
 
