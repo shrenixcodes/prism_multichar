@@ -1,0 +1,52 @@
+{
+    "label_subtitle": "character selection",
+    "hint_navigation": "↑↓ to browse · enter to play",
+
+    "label_firstname": "First Name",
+    "label_lastname": "Last Name",
+    "label_dob": "Date of Birth",
+    "label_gender": "Gender",
+    "label_nationality": "Nationality",
+    "label_job": "Job",
+    "label_cash": "Cash",
+    "label_bank": "Bank",
+    "label_last_played": "Last Played",
+    "label_empty_slot": "Empty Slot",
+    "label_empty_hint": "click to create a character",
+
+    "gender_male": "Male",
+    "gender_female": "Female",
+
+    "value_unknown": "Unknown",
+
+    "create_title": "New Character — Slot {slot}",
+    "action_create": "Create Character",
+    "action_play": "Play",
+    "action_delete": "Hold to Delete",
+
+    "spawn_title": "Where to?",
+    "spawn_hint": "esc to go back",
+    "spawn_last_location": "Last Location",
+    "spawn_point_legion_square": "Legion Square",
+    "spawn_point_sandy_shores": "Sandy Shores",
+    "spawn_point_paleto_bay": "Paleto Bay",
+    "spawn_point_vinewood_hills": "Vinewood Hills",
+
+    "err_unknown": "Something went wrong. Try again.",
+    "err_already_logged_in": "You are already logged in.",
+    "err_no_identifier": "Could not read your identifiers.",
+    "err_no_session": "Your selection session has expired.",
+    "err_too_fast": "Slow down a little.",
+    "err_invalid_slot": "That slot is not valid.",
+    "err_slot_locked": "That slot is not unlocked for you.",
+    "err_slot_taken": "That slot is already in use.",
+    "err_invalid_data": "The character data sent was invalid.",
+    "err_invalid_firstname": "Enter a valid first name.",
+    "err_invalid_lastname": "Enter a valid last name.",
+    "err_invalid_gender": "Pick a gender.",
+    "err_invalid_dob": "Enter a valid date of birth.",
+    "err_invalid_nationality": "Enter a nationality.",
+    "err_create_failed": "Could not create the character.",
+    "err_not_owned": "That character does not belong to you.",
+    "err_login_failed": "Could not log into that character."
+}
