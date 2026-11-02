@@ -146,6 +146,16 @@ function Bridge.DeleteCharacter(_, identifier)
     return true
 end
 
+function Bridge.FetchAppearance(identifier)
+    local row = MySQL.single.await('SELECT skin FROM users WHERE identifier = ?', { identifier })
+
+    if not row or not row.skin then
+        return nil
+    end
+
+    return type(row.skin) == 'string' and json.decode(row.skin) or row.skin
+end
+
 function Bridge.GiveStarterItems(xPlayer)
     for _, item in ipairs(Config.StarterItems) do
         xPlayer.addInventoryItem(item.name, item.amount)
