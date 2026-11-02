@@ -28,6 +28,15 @@ server_scripts {
     'server/main.lua'
 }
 
+ui_page 'web/index.html'
+
+files {
+    'web/index.html',
+    'web/style.css',
+    'web/app.js',
+    'locales/en.json'
+}
+
 dependencies {
     'ox_lib',
     'oxmysql',
