@@ -10,7 +10,8 @@ version '0.1.0'
 shared_script 'config.lua'
 
 client_scripts {
-    'bridge/client.lua'
+    'bridge/client.lua',
+    'client/scene.lua'
 }
 
 server_scripts {
