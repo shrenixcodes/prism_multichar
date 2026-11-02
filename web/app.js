@@ -301,7 +301,7 @@
         switch (message.action) {
             case 'open':
                 app.classList.remove('hidden');
-                requestAnimationFrame(() => app.classList.add('visible'));
+                window.setTimeout(() => app.classList.add('visible'), 10);
                 break;
             case 'slots':
                 slots = message.slots;
@@ -374,7 +374,7 @@
 
         if (isDev) {
             app.classList.remove('hidden');
-            requestAnimationFrame(() => app.classList.add('visible'));
+            window.setTimeout(() => app.classList.add('visible'), 10);
             slots = mockCharacters();
             total = slots.length;
             renderSlots();

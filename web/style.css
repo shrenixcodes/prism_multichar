@@ -267,6 +267,7 @@ html, body {
 }
 
 .btn {
+  width: 100%;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
