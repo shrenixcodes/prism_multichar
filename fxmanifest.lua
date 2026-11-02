@@ -11,7 +11,8 @@ shared_script 'config.lua'
 
 client_scripts {
     'bridge/client.lua',
-    'client/scene.lua'
+    'client/scene.lua',
+    'client/camera.lua'
 }
 
 server_scripts {
